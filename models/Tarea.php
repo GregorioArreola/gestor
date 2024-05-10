@@ -58,13 +58,13 @@ class Tarea extends \yii\db\ActiveRecord
         return [
             'tar_id' => 'Tar ID',
             'tar_nombre' => 'Nombre',
-            'tar_descripcion' => 'Tar Descripcion',
+            'tar_descripcion' => 'Descripcion',
             'tar_fkprioridad' => 'Tar Fkprioridad',
             'tar_fkestado' => 'Tar Fkestado',
             'tar_creacion' => 'Tar Creacion',
-            'tar_finalizacion' => 'Tar Finalizacion',
-            'tar_inicio' => 'Tar Inicio',
-            'tar_cierre' => 'Tar Cierre',
+            'tar_finalizacion' => 'Fecha de Finalizacion',
+            'tar_inicio' => 'Fecha de Inicio',
+            'tar_cierre' => 'Fecha de Cierre',
             'tar_fkmateria' => 'Tar Fkmateria',
         ];
     }
