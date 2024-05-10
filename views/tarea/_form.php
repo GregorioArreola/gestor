@@ -48,7 +48,10 @@ use kartik\select2\Select2;
 
     <div class="row">
         <div class="col-md-3">
-            <?= $form->field($model, 'tar_creacion')->textInput() ?>
+            <?= $form->field($model, 'tar_creacion')->widget(DatePicker::class, [
+                'dateFormat' => 'yyyy-MM-dd',
+                'options' => ['class' => 'form-control'],
+            ]) ?>
         </div>
         <div class="col-md-3">
             <?= $form->field($model, 'tar_finalizacion')->widget(DatePicker::class, [

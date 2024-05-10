@@ -61,7 +61,7 @@ class Tarea extends \yii\db\ActiveRecord
             'tar_descripcion' => 'Descripcion',
             'tar_fkprioridad' => 'Prioridad',
             'tar_fkestado' => 'Estado',
-            'tar_creacion' => 'Creacion',
+            'tar_creacion' => 'Fecha de Creacion',
             'tar_finalizacion' => 'Fecha de Finalizacion',
             'tar_inicio' => 'Fecha de Inicio',
             'tar_cierre' => 'Fecha de Cierre',
