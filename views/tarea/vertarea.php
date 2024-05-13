@@ -3,13 +3,12 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/** @var yii\web\View $this */
-/** @var app\models\Tarea $model */
+/* @var $this yii\web\View */
+/* @var $model app\models\Tarea */
 
-$this->title = $model->tar_id;
+$this->title = $model->tar_nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Tareas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
 ?>
 <div class="tarea-view">
 
@@ -20,7 +19,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Eliminar', ['delete', 'tar_id' => $model->tar_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => '¿Esta seguro que quiere eliminar esta tarea?',
+                'confirm' => '¿Está seguro que quiere eliminar esta tarea?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -32,13 +31,23 @@ $this->params['breadcrumbs'][] = $this->title;
             'tar_id',
             'tar_nombre',
             'tar_descripcion',
-            'tar_fkprioridad',
-            'tar_fkestado',
+            [
+                'attribute' => 'tar_fkprioridad',
+                'value' => $model->tarFkprioridad ? $model->tarFkprioridad->prio_nombre : 'No definida',
+            ],
+            [
+                'attribute' => 'tar_fkestado',
+                'value' => $model->tarFkestado ? $model->tarFkestado->est_nombre : 'No definido',
+            ],
+            [
+                'attribute' => 'tar_fkmateria',
+                'value' => $model->tarFkmateria ? $model->tarFkmateria->mat_nombre : 'No definido',
+            ],
+                         
             'tar_creacion',
             'tar_finalizacion',
             'tar_inicio',
             'tar_cierre',
-            'tar_fkmateria',
         ],
     ]) ?>
 

@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "prioridad".
@@ -52,5 +53,15 @@ class Prioridad extends \yii\db\ActiveRecord
     public function getTareas()
     {
         return $this->hasMany(Tarea::class, ['tar_fkprioridad' => 'prio_id']);
+    }
+
+    /**
+     * Retorna una lista de prioridades para uso en formularios.
+     *
+     * @return array
+     */
+    public static function getList() {
+        $prioridades = self::find()->all();
+        return ArrayHelper::map($prioridades, 'prio_id', 'prio_nombre');
     }
 }

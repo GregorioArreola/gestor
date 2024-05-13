@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "periodo".
@@ -67,5 +68,10 @@ class Periodo extends \yii\db\ActiveRecord
     public function getPerFkpersonal()
     {
         return $this->hasOne(Personal::class, ['per_id' => 'per_fkpersonal']);
+    }
+
+    public static function getList() {
+        $periodos = self::find()->all();
+        return ArrayHelper::map($periodos, 'per_id', 'per_nombre');
     }
 }

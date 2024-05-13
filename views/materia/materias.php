@@ -1,30 +1,28 @@
 <?php
 /* @var $this yii\web\View */
-/* @var $tareas array of app\models\Tarea */
+/* @var $materias array of app\models\Materia */
 
-use yii\helpers\Url;
-use yii\bootstrap5\Html;
+use yii\helpers\Html;
 
 $this->title = 'Listado de materias';
 ?>
 
 <?php if (!empty($materias)): ?>
     <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Nombre de la Tarea</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($materias as $materia): ?>
+        <thead>
             <tr>
-                <!-- Crear un enlace en el nombre de la tarea -->
-                <td><?= Html::a(htmlspecialchars($materia->mat_nombre), ['materia/vermateria', 'mat_id' => $materia->mat_id]) ?></td>
+                <th>Nombre de la Materia</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-</table>
-
+        </thead>
+        <tbody>
+            <?php foreach ($materias as $materia): ?>
+                <tr>
+                    <!-- Crear un enlace en el nombre de la materia -->
+                    <td><?= Html::a(Html::encode($materia->mat_nombre), ['materia/view-materia', 'mat_id' => $materia->mat_id]) ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 <?php else: ?>
-    <p>No se encontraron tareas.</p>
+    <p>No se encontraron materias.</p>
 <?php endif; ?>

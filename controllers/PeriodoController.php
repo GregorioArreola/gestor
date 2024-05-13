@@ -143,6 +143,20 @@ class PeriodoController extends Controller
             'periodos' => $periodos
         ]);
     }
-
+    public function actionMateriasperiodo($per_id)
+    {
+        $model = Periodo::find()
+            ->where(['per_id' => $per_id])
+            ->one();
+    
+        if ($model === null) {
+            throw new NotFoundHttpException("El periodo solicitado no existe.");
+        }
+    
+        return $this->render('verperiodo', [
+            'model' => $model
+        ]);
+    }
+    
    
 }

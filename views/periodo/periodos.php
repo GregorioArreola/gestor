@@ -19,7 +19,7 @@ $this->title = 'Listado de periodos';
         <?php foreach ($periodos as $periodo): ?>
             <tr>
                 
-                <td><?= Html::a(htmlspecialchars($periodo->per_nombre), ['materia/materiasperiodo', 'per_id' => $periodo->per_id]) ?></td>
+                <td><?= Html::a(htmlspecialchars($periodo->per_nombre), ['periodo/materiasperiodo', 'per_id' => $periodo->per_id]) ?></td>
             </tr>
         <?php endforeach; ?>
     </tbody>

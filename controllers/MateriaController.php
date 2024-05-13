@@ -149,7 +149,7 @@ class MateriaController extends Controller
         $usuario_actual_id = Yii::$app->user->identity->getId();  // Obtiene el ID del usuario actualmente logueado
 
         $materias = Materia::find()
-            ->select(['mat_nombre'])
+            ->select(['mat_nombre','mat_id'])
             ->innerJoinWith('matFkperiodo.perFkpersonal') //llave foranea seguida de punto...
             ->where(['personal.per_fkusuario' => $usuario_actual_id])
             ->all();
@@ -159,4 +159,22 @@ class MateriaController extends Controller
             'materias' => $materias
         ]);
     }
+
+    public function actionViewMateria($mat_id)
+    {
+        $materia = Materia::find()
+            ->with('tareas') // Asume que 'tareas' es la relación en el modelo de Materia que devuelve las tareas asociadas
+            ->where(['mat_id' => $mat_id])
+            ->one();
+    
+        if ($materia === null) {
+            throw new NotFoundHttpException("La materia solicitada no existe.");
+        }
+    
+        return $this->render('verMateria', [
+            'model' => $materia
+        ]);
+    }
+    
+
 }

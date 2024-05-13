@@ -1,41 +1,34 @@
 <?php
 
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
-/** @var yii\web\View $this */
-/** @var app\models\Periodo $model */
+/* @var $this yii\web\View */
+/* @var $model app\models\Periodo */
 
-$this->title = $model->per_id;
+$this->title = "Detalle del periodo";
 $this->params['breadcrumbs'][] = ['label' => 'Periodos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
 ?>
 <div class="periodo-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?= Html::a('Update', ['update', 'per_id' => $model->per_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'per_id' => $model->per_id], [
-            'class' => 'btn btn-danger',
-            'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
-                'method' => 'post',
-            ],
-        ]) ?>
-    </p>
+<h1><?= Html::encode($model->per_nombre) ?></h1>
 
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
             'per_id',
-            'per_fkpersonal',
-            'per_nombre',
+            [
+                'attribute' => 'materias',
+                'value' => function ($model) {
+                    return !empty($model->materias) ? implode('<br>', array_map(function ($materia) {
+                        return Html::a(Html::encode($materia->mat_nombre), ['materia/view-materia', 'mat_id' => $materia->mat_id], ['class' => 'link']);
+                    }, $model->materias)) : 'No definidas';
+                },
+                'format' => 'raw', // Especificamos 'raw' para que se renderice el HTML
+            ],
         ],
-
-        
     ]) ?>
-    
 
 </div>
