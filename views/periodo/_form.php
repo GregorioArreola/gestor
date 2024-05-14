@@ -8,18 +8,30 @@ use yii\widgets\ActiveForm;
 /** @var yii\widgets\ActiveForm $form */
 ?>
 
-<div class="periodo-form">
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-body">
+                    <h1 class="text-center mb-4">Crear periodo</h1>
 
-    <?php $form = ActiveForm::begin(); ?>
+                    <div class="periodo-form">
 
-    <?= $form->field($model, 'per_fkpersonal')->textInput() ?>
+                        <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'per_nombre')->textInput(['maxlength' => true]) ?>
+                        <?= $form->field($model, 'per_fkpersonal')->textInput() ?>
 
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+                        <?= $form->field($model, 'per_nombre')->textInput(['maxlength' => true]) ?>
+
+                        <div class="form-group">
+                            <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
+                        </div>
+
+                        <?php ActiveForm::end(); ?>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>

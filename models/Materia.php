@@ -44,8 +44,8 @@ class Materia extends \yii\db\ActiveRecord
     {
         return [
             'mat_id' => 'Mat ID',
-            'mat_nombre' => 'Mat Nombre',
-            'mat_fkperiodo' => 'Mat Fkperiodo',
+            'mat_nombre' => 'Nombre de la materia',
+            'mat_fkperiodo' => 'Elige un periodo',
         ];
     }
 

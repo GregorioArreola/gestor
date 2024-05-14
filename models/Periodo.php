@@ -45,8 +45,8 @@ class Periodo extends \yii\db\ActiveRecord
     {
         return [
             'per_id' => 'Per ID',
-            'per_fkpersonal' => 'Per Fkpersonal',
-            'per_nombre' => 'Per Nombre',
+            'per_fkpersonal' => 'Personal',
+            'per_nombre' => 'Nombre del periodo',
         ];
     }
 

@@ -14,10 +14,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'mat_nombre')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'mat_fkperiodo')->textInput() ?>
+    <?= Html::dropDownList('prioridad_id', Yii::$app->request->get('prioridad_id'), \app\models\Prioridad::getList(),
+    ['prompt' => 'Seleccione un periodo', 'class' => 'form-select mb-3']) ?>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Guardar', ['class' => 'btn btn-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>
