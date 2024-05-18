@@ -21,29 +21,30 @@ $this->title = '';
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-2">
-                            <?= Html::submitButton('Filtrar', ['class' => 'btn btn-primary mb-3']) ?>
-                        </div>
-                        <div class="col-md-3">
-                            <?= Html::a('Crear tarea', ['create'], ['class' => 'btn btn-success mb-3']) ?>
+                        <div class="col-md-12">
+                            <?= Html::beginForm(['tarea/index'], 'get') ?>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <?= Html::dropDownList('prioridad_id', Yii::$app->request->get('prioridad_id'), \app\models\Prioridad::getList(), ['prompt' => 'Seleccione Prioridad', 'class' => 'form-select mb-3']) ?>
+                                </div>
+                                <div class="col-md-3">
+                                    <?= Html::dropDownList('periodo_id', Yii::$app->request->get('periodo_id'), \app\models\Periodo::getList(), ['prompt' => 'Seleccione periodo', 'class' => 'form-select mb-3']) ?>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="btn-group mb-3">
+                                        <?= Html::submitButton('Ordenar Ascendente', ['name' => 'order', 'value' => 'asc', 'class' => 'btn btn-default' . (Yii::$app->request->get('order') == 'asc' ? ' active' : '')]) ?>
+                                        <?= Html::submitButton('Ordenar Descendente', ['name' => 'order', 'value' => 'desc', 'class' => 'btn btn-default' . (Yii::$app->request->get('order') == 'desc' ? ' active' : '')]) ?>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <?= Html::a('Crear tarea', ['create'], ['class' => 'btn btn-success mb-3']) ?>
+                                </div>
+                                <div class="col-md-3">
+                                    <?= Html::submitButton('Filtrar', ['class' => 'btn btn-primary mb-3']) ?>
+                                </div>
+                            </div>
                             <?= Html::endForm() ?>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <?= Html::beginForm(['tarea/index'], 'get') ?>
-                            <?= Html::dropDownList('prioridad_id', Yii::$app->request->get('prioridad_id'), \app\models\Prioridad::getList(), ['prompt' => 'Seleccione Prioridad', 'class' => 'form-select mb-3']) ?>
-                        </div>
-                        <div class="col-md-3">
-                            <?= Html::dropDownList('periodo_id', Yii::$app->request->get('periodo_id'), \app\models\Periodo::getList(), ['prompt' => 'Seleccione periodo', 'class' => 'form-select mb-3']) ?>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="btn-group mb-3">
-                                <?= Html::submitButton('Ordenar Ascendente', ['name' => 'order', 'value' => 'asc', 'class' => 'btn btn-default' . (Yii::$app->request->get('order') == 'asc' ? ' active' : '')]) ?>
-                                <?= Html::submitButton('Ordenar Descendente', ['name' => 'order', 'value' => 'desc', 'class' => 'btn btn-default' . (Yii::$app->request->get('order') == 'desc' ? ' active' : '')]) ?>
-                            </div>
-                        </div>
-
                     </div>
                     <div class="row">
                         <div class="col-md-12">

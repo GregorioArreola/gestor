@@ -32,7 +32,6 @@ use yii\helpers\Html;
                     ['label' => 'Periodos', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['periodo/periodos']],
                     ['label' => 'Materias', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['materia/materias']],
                     ['label' => 'Tareas', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['tarea/index']],
-                    ['label' => 'Insights', 'iconClass' => 'nav-icon far fa-circle text-warning', 'url' => ['controller/accion-insights']],
                 ],
             ]);
             ?>

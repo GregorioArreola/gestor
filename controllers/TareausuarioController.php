@@ -51,6 +51,7 @@ class TareausuarioController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($tarusu_id),
+            
         ]);
     }
 

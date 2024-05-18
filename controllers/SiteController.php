@@ -1,14 +1,15 @@
 <?php
 
 namespace app\controllers;
+use Yii;
+use app\models\Tarea;
+use yii\web\Response;
+use yii\web\Controller;
+use app\models\ContactForm;
+use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 use webvimark\modules\UserManagement\UserManagementModule;
 use webvimark\modules\UserManagement\models\forms\LoginForm;
-use Yii;
-use yii\filters\AccessControl;
-use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
-use app\models\ContactForm;
 
 class SiteController extends Controller
 {
@@ -66,9 +67,26 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
-    }
+        $usuario_actual_id = Yii::$app->user->identity->getId();
 
+        // Obtener las 5 tareas más recientes del usuario actual
+        $tareasRecientes = Tarea::find()
+            ->alias('t')
+            ->innerJoin('materia m', 't.tar_fkmateria = m.mat_id')
+            ->innerJoin('periodo p', 'm.mat_fkperiodo = p.per_id')
+            ->innerJoin('personal per', 'p.per_fkpersonal = per.per_id')
+            ->where(['per.per_fkusuario' => $usuario_actual_id])
+            ->orderBy(['t.tar_creacion' => SORT_DESC])
+            ->limit(5)
+            ->all();
+
+            // Depuración: imprimir las tareas recientes
+        Yii::debug($tareasRecientes, __METHOD__);
+
+        return $this->render('index', [
+            'tareasRecientes' => $tareasRecientes,
+        ]);
+    }
     /**
      * Login action.
      *
