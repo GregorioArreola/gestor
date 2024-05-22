@@ -36,14 +36,14 @@ $this->title = '';
                                         <?= Html::submitButton('Ordenar Descendente', ['name' => 'order', 'value' => 'desc', 'class' => 'btn btn-default' . (Yii::$app->request->get('order') == 'desc' ? ' active' : '')]) ?>
                                     </div>
                                 </div>
-                                <div class="col-md-3">
-                                    <?= Html::a('Crear tarea', ['create'], ['class' => 'btn btn-success mb-3']) ?>
-                                </div>
-                                <div class="col-md-3">
-                                    <?= Html::submitButton('Filtrar', ['class' => 'btn btn-primary mb-3']) ?>
-                                </div>
+
                             </div>
                             <?= Html::endForm() ?>
+                        </div>
+                    <div class="col-md-12">
+                        <div class="col-md-3">
+                                    <?= Html::submitButton('Filtrar', ['class' => 'btn btn-primary mb-3']) ?>
+                                </div>
                         </div>
                     </div>
                     <div class="row">
@@ -68,6 +68,9 @@ $this->title = '';
                             <?php else : ?>
                                 <p class="text-center">No se encontraron tareas.</p>
                             <?php endif; ?>
+                            <div class="col-md-3">
+                                    <?= Html::a('Crear tarea', ['create'], ['class' => 'btn btn-success mb-3']) ?>
+                                </div>
                         </div>
                     </div>
                 </div>

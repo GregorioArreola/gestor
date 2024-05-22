@@ -48,12 +48,12 @@ class Personal extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'per_id' => 'Per ID',
-            'per_nombre' => 'Per Nombre',
-            'per_paterno' => 'Per Paterno',
-            'per_materno' => 'Per Materno',
-            'per_nacimiento' => 'Per Nacimiento',
-            'per_fkusuario' => 'Per Fkusuario',
+            'per_id' => 'ID',
+            'per_nombre' => 'Nombre',
+            'per_paterno' => 'Paterno',
+            'per_materno' => 'Materno',
+            'per_nacimiento' => 'Fecha de Nacimiento',
+            'per_fkusuario' => 'usuario',
         ];
     }
 

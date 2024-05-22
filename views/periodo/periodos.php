@@ -29,13 +29,15 @@ $this->title = 'Listado de periodos';
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <p>
-                            <?= Html::a('Crear periodo', ['create'], ['class' => 'btn btn-success']) ?>
-                        </p>
+                        
                     <?php else: ?>
                         <p class="text-center">No se encontraron periodos.</p>
                     <?php endif; ?>
+                    <p>
+                            <?= Html::a('Crear periodo', ['create'], ['class' => 'btn btn-success']) ?>
+                        </p>
                 </div>
+
             </div>
         </div>
     </div>

@@ -11,7 +11,6 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="tarea-form">
-
     <?php $form = ActiveForm::begin(); ?>
 
     <div class="row">
@@ -24,8 +23,20 @@ use yii\widgets\ActiveForm;
     </div>
 
     <div class="row">
-        <div class="col-md-4">
-            <?= $form->field($model, 'tar_fkestado')->textInput() ?>
+
+
+     <div class="col-md-4">
+            <?= $form->field($model, 'tar_fkestado')->widget(Select2::class, [
+                'data' => [
+                    '1' => 'No iniciada',
+                    '2' => 'Iniciada',
+                    '3' => 'Detenida',
+                ],
+                'options' => ['placeholder' => 'Selecciona un estado...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]) ?>
         </div>
         <div class="col-md-4">
             <?= $form->field($model, 'tar_fkprioridad')->widget(Select2::class, [
@@ -40,8 +51,19 @@ use yii\widgets\ActiveForm;
                 ],
             ]) ?>
         </div>
-        <div class="col-md-4">
-            <?= $form->field($model, 'tar_fkmateria')->textInput() ?>
+
+    <div class="col-md-4">
+            <?= $form->field($model, 'tar_fkmateria')->widget(Select2::class, [
+                'data' => [
+                    '1' => 'Materia1',
+                    '2' => 'Materia2',
+                    '3' => 'Materia3',
+                ],
+                'options' => ['placeholder' => 'Selecciona una materia...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]) ?>
         </div>
     </div>
 

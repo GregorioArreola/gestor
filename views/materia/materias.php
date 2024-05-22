@@ -28,13 +28,15 @@ $this->title = 'Listado de materias';
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                        <p>
-                            <?= Html::a('Crear materia', ['create'], ['class' => 'btn btn-success']) ?>
-                        </p>
+
                     <?php else: ?>
                         <p class="text-center">No se encontraron materias.</p>
                     <?php endif; ?>
+                    <p>
+                            <?= Html::a('Crear materia', ['create'], ['class' => 'btn btn-success']) ?>
+                        </p>
                 </div>
+
             </div>
         </div>
     </div>
