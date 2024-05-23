@@ -10,18 +10,26 @@ use yii\grid\GridView;
 /** @var app\models\PersonalSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
 
-$this->title = 'Personals';
+$this->title = '';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<h1> Creacion de personal</h1>
+
+<!-- Imagen de usuario -->
+<div style="text-align: center;">
+    <?= Html::img('@web/images/user.png', ['alt' => 'Imagen de Usuario', 'style' => 'width: 100px; height: 100px;']) ?>
+</div>
+
 <div class="personal-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Personal', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Crear Personal', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); 
+    ?>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -39,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Personal $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'per_id' => $model->per_id]);
-                 }
+                }
             ],
         ],
     ]); ?>
