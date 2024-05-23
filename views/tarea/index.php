@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //'tar_fkmateria',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Tarea $model, $key, $index) {
+                'urlCreator' => function ($action, Tarea $model, $key, $index, $column) {
                     return Url::toRoute([$action, 'tar_id' => $model->tar_id]);
                  }
             ],
