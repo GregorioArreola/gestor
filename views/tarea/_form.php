@@ -19,6 +19,7 @@ use yii\widgets\ActiveForm;
         </div>
         <div class="col-md-6">
             <?= $form->field($model, 'tar_descripcion')->textInput(['maxlength' => true, 'class' => 'form-control form-control-lg']) ?>
+<<<<<<< HEAD
         </div>
     </div>
 
@@ -64,10 +65,37 @@ use yii\widgets\ActiveForm;
                     'allowClear' => true
                 ],
             ]) ?>
+=======
+>>>>>>> DevelopGregorio
         </div>
     </div>
 
     <div class="row">
+<<<<<<< HEAD
+=======
+        <div class="col-md-4">
+            <?= $form->field($model, 'tar_fkestado')->textInput() ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'tar_fkprioridad')->widget(Select2::class, [
+                'data' => [
+                    '1' => 'Alta',
+                    '2' => 'Media',
+                    '3' => 'Baja',
+                ],
+                'options' => ['placeholder' => 'Selecciona una prioridad...'],
+                'pluginOptions' => [
+                    'allowClear' => true
+                ],
+            ]) ?>
+        </div>
+        <div class="col-md-4">
+            <?= $form->field($model, 'tar_fkmateria')->textInput() ?>
+        </div>
+    </div>
+
+    <div class="row">
+>>>>>>> DevelopGregorio
         <div class="col-md-3">
             <?= $form->field($model, 'tar_creacion')->widget(DatePicker::class, [
                 'options' => ['class' => 'form-control'],
