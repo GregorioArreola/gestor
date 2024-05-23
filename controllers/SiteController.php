@@ -68,6 +68,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $usuario_actual_id = Yii::$app->user->identity->getId();
+       
 
         // Obtener las 5 tareas más recientes del usuario actual
         $tareasRecientes = Tarea::find()
@@ -78,14 +79,14 @@ class SiteController extends Controller
             ->where(['per.per_fkusuario' => $usuario_actual_id])
             ->orderBy(['t.tar_creacion' => SORT_DESC])
             ->limit(5)
-            ->all();
-
-            // Depuración: imprimir las tareas recientes
-        Yii::debug($tareasRecientes, __METHOD__);
-
+            ->all();      
+            
         return $this->render('index', [
             'tareasRecientes' => $tareasRecientes,
         ]);
+       
+
+        
     }
     /**
      * Login action.
