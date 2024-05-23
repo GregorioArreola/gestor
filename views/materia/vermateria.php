@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php if (!empty($model->tareas)): ?>
     <ul>
     <?php foreach ($model->tareas as $tarea): ?>
-        <li><?= Html::a(Html::encode($tarea->tar_nombre), ['tarea/view', 'tar_id' => $tarea->tar_id]) ?></li>
+        <li><?= Html::a(Html::encode($tarea->tar_nombre), ['tarea/vertarea', 'tar_id' => $tarea->tar_id]) ?></li>
     <?php endforeach; ?>
     </ul>
 <?php else: ?>

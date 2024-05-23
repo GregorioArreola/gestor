@@ -3,24 +3,23 @@
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
-/** @var yii\web\View $this */
-/** @var app\models\Tarea $model */
+/* @var $this yii\web\View */
+/* @var $model app\models\Tarea */
 
-$this->title = $model->tar_id;
+$this->title = $model->tar_nombre;
 $this->params['breadcrumbs'][] = ['label' => 'Tareas', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
-\yii\web\YiiAsset::register($this);
 ?>
 <div class="tarea-view">
 
-    <h1></h1>
+    <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'tar_id' => $model->tar_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'tar_id' => $model->tar_id], [
+        <?= Html::a('Actualizar', ['update', 'tar_id' => $model->tar_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'tar_id' => $model->tar_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => '¿Está seguro que quiere eliminar esta tarea?',
                 'method' => 'post',
             ],
         ]) ?>
@@ -44,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'tar_fkmateria',
                 'value' => $model->tarFkmateria ? $model->tarFkmateria->mat_nombre : 'No definido',
             ],
+                         
             'tar_creacion',
             'tar_finalizacion',
             'tar_inicio',
@@ -51,8 +51,4 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]) ?>
 
-<<<<<<< HEAD
 </div>
-=======
-</div>
->>>>>>> DevelopGregorio
