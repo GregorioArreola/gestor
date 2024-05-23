@@ -59,7 +59,7 @@ $this->title = '';
                                     <tbody>
                                         <?php foreach ($tareas as $tarea) : ?>
                                             <tr>
-                                                <td><?= Html::a(htmlspecialchars($tarea->tar_nombre), ['tarea/view', 'tar_id' => $tarea->tar_id]) ?></td>
+                                                <td><?= Html::a(htmlspecialchars($tarea->tar_nombre), ['tarea/vertarea', 'tar_id' => $tarea->tar_id]) ?></td>
                                                 <td><?= Yii::$app->formatter->asDate($tarea->tar_finalizacion, 'php:Y-m-d') ?></td>
                                             </tr>
                                         <?php endforeach; ?>
