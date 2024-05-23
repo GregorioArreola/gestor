@@ -56,7 +56,7 @@ class Tarea extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'tar_id' => 'Tar ID',
+            'tar_id' => 'ID',
             'tar_nombre' => 'Nombre',
             'tar_descripcion' => 'Descripcion',
             'tar_fkprioridad' => 'Prioridad',

@@ -28,10 +28,10 @@ use yii\helpers\Html;
             <?php
             echo \hail812\adminlte\widgets\Menu::widget([
                 'items' => [
-                    ['label' => 'Inicio', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['site/index']],
-                    ['label' => 'Periodos', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['periodo/periodos']],
-                    ['label' => 'Materias', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['materia/materias']],
-                    ['label' => 'Tareas', 'iconStyle' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['tarea/index']],
+                    ['label' => 'Inicio', 'fas fa-book' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['site/index']],
+                    ['label' => 'Periodos', 'fas fa-calendar-alt' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['periodo/periodos']],
+                    ['label' => 'Materias', 'fas fa-tasks' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['materia/materias']],
+                    ['label' => 'Tareas', 'fas fa-tasks' => 'far', 'iconClassAdded' => 'text-info', 'url' => ['tarea/index']],
                 ],
             ]);
             ?>

@@ -43,7 +43,7 @@ class Materia extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'mat_id' => 'Mat ID',
+            'mat_id' => 'ID',
             'mat_nombre' => 'Nombre de la materia',
             'mat_fkperiodo' => 'Elige un periodo',
         ];

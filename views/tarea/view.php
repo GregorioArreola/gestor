@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="tarea-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <h1></h1>
 
     <p>
         <?= Html::a('Actualizar', ['update', 'tar_id' => $model->tar_id], ['class' => 'btn btn-primary']) ?>
@@ -43,7 +43,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'tar_fkmateria',
                 'value' => $model->tarFkmateria ? $model->tarFkmateria->mat_nombre : 'No definido',
             ],
-                         
             'tar_creacion',
             'tar_finalizacion',
             'tar_inicio',

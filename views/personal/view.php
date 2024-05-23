@@ -13,11 +13,13 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="personal-view">
 
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div style="text-align: center;">
+        <?= Html::img('@web/images/user.webp', ['alt' => 'Imagen de Usuario', 'style' => 'width: 150px; height: 100px;']) ?>
+    </div>
 
     <p>
-        <?= Html::a('Update', ['update', 'per_id' => $model->per_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'per_id' => $model->per_id], [
+        <?= Html::a('Actualizar', ['update', 'per_id' => $model->per_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Eliminar', ['delete', 'per_id' => $model->per_id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => '¿Esta seguro de eliminar este registro?',
