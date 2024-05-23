@@ -3,10 +3,12 @@
 namespace app\controllers;
 
 use Yii;
+use materias;
 use app\models\Tarea;
+use app\models\Materia;
 use app\models\Periodo;
-use app\models\Personal;
 use yii\web\Controller;
+use app\models\Personal;
 use app\models\TareaSearch;
 use yii\filters\VerbFilter;
 use yii\web\NotFoundHttpException;
@@ -111,20 +113,54 @@ class TareaController extends Controller
     public function actionCreate()
     {
         $model = new Tarea();
- 
+    
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'tar_id' => $model->tar_id]);
+            if ($model->load($this->request->post())) {
+                // Establecer la fecha y hora actual para el campo de creación
+                $model->tar_creacion = date('Y-m-d H:i:s');
+    
+                // Establecer el estado inicial de la tarea
+                $model->tar_fkestado = 2;  // Asumiendo que el ID 2 corresponde al estado inicial deseado
+    
+                // Asegurarse de que el campo tar_cierre sea nulo
+                $model->tar_cierre = null;
+    
+                if ($model->save()) {
+                    return $this->redirect(['view', 'tar_id' => $model->tar_id]);
+                }
             }
         } else {
             $model->loadDefaultValues();
         }
- 
+    
         return $this->render('create', [
             'model' => $model,
         ]);
     }
-
-
     
+    public function actionGetMaterias($periodo_id)
+    {
+        $materias = Materia::find()->where(['mat_fkperiodo' => $periodo_id])->all();
+        if (!empty($materias)) {
+            foreach ($materias as $materia) {
+                echo "<option value='" . $materia->mat_id . "'>" . $materia->mat_nombre . "</option>";
+            }
+        } else {
+            echo "<option>- No hay materias disponibles -</option>";
+        }
+    }
+    
+    public function actionUpdate($tar_id)
+    {
+        $model = $this->findModel($tar_id);
+
+        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'tar_id' => $model->tar_id]);
+        }
+
+        return $this->render('_viewupdate', [
+            'model' => $model,
+        ]);
+
+    }
 }
