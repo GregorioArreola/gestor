@@ -66,62 +66,27 @@ class SiteController extends Controller
      * @return string
      */
     public function actionIndex()
-{
-    $usuario_actual_id = Yii::$app->user->identity->getId();
-    $fecha_actual = new \DateTime();
-    $fecha_proxima = new \DateTime('+7 days');
+    {
+        $usuario_actual_id = Yii::$app->user->identity->getId();
 
-    // Tareas Recientes
-    $tareasRecientes = Tarea::find()
-        ->alias('t')
-        ->innerJoin('materia m', 't.tar_fkmateria = m.mat_id')
-        ->innerJoin('periodo p', 'm.mat_fkperiodo = p.per_id')
-        ->innerJoin('personal per', 'p.per_fkpersonal = per.per_id')
-        ->where(['and', 
-        ['per.per_fkusuario' => $usuario_actual_id],
-        ['<>', 't.tar_fkestado', 3] // Estado vencido
-       ])
-        ->orderBy(['t.tar_creacion' => SORT_DESC])
-        ->limit(5)
-        ->all();
+        // Obtener las 5 tareas más recientes del usuario actual
+        $tareasRecientes = Tarea::find()
+            ->alias('t')
+            ->innerJoin('materia m', 't.tar_fkmateria = m.mat_id')
+            ->innerJoin('periodo p', 'm.mat_fkperiodo = p.per_id')
+            ->innerJoin('personal per', 'p.per_fkpersonal = per.per_id')
+            ->where(['per.per_fkusuario' => $usuario_actual_id])
+            ->orderBy(['t.tar_creacion' => SORT_DESC])
+            ->limit(5)
+            ->all();
 
-    // Tareas Vencidas
-    $tareasVencidas = Tarea::find()
-        ->alias('t')
-        ->innerJoin('materia m', 't.tar_fkmateria = m.mat_id')
-        ->innerJoin('periodo p', 'm.mat_fkperiodo = p.per_id')
-        ->innerJoin('personal per', 'p.per_fkpersonal = per.per_id')
-        ->where(['and', 
-                 ['per.per_fkusuario' => $usuario_actual_id],
-                 ['t.tar_fkestado' => 3]  // Estado vencido
-                ])
-        ->orderBy(['t.tar_finalizacion' => SORT_ASC])
-        ->limit(5)
-        ->all();
+            // Depuración: imprimir las tareas recientes
+        Yii::debug($tareasRecientes, __METHOD__);
 
-    // Tareas Próximas a Vencer
-    $tareasProximasVencer = Tarea::find()
-        ->alias('t')
-        ->innerJoin('materia m', 't.tar_fkmateria = m.mat_id')
-        ->innerJoin('periodo p', 'm.mat_fkperiodo = p.per_id')
-        ->innerJoin('personal per', 'p.per_fkpersonal = per.per_id')
-        ->where(['and',
-                 ['per.per_fkusuario' => $usuario_actual_id],
-                 ['<>', 't.tar_fkestado', 3],  // Excluir tareas ya vencidas
-                 ['between', 't.tar_finalizacion', $fecha_actual->format('Y-m-d'), $fecha_proxima->format('Y-m-d')]
-                ])
-        ->orderBy(['t.tar_finalizacion' => SORT_ASC])
-        ->limit(5)
-        ->all();
-
-    return $this->render('index', [
-        'tareasRecientes' => $tareasRecientes,
-        'tareasVencidas' => $tareasVencidas,
-        'tareasProximasVencer' => $tareasProximasVencer,
-    ]);
-}
-
-    
+        return $this->render('index', [
+            'tareasRecientes' => $tareasRecientes,
+        ]);
+    }
     /**
      * Login action.
      *

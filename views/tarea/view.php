@@ -26,41 +26,20 @@ $this->params['breadcrumbs'][] = $this->title;
     </p>
 
     <?= DetailView::widget([
-    'model' => $model,
-    'attributes' => [
-        'tar_id',
-        'tar_nombre',
-        'tar_descripcion',
-        [
-            'attribute' => 'tar_fkprioridad',
-            'value' => $model->tarFkprioridad ? $model->tarFkprioridad->prio_nombre : 'No definida',
+        'model' => $model,
+        'attributes' => [
+            'tar_id',
+            'tar_nombre',
+            'tar_descripcion',
+            'tar_fkprioridad',
+            'tar_fkestado',
+            'tar_creacion',
+            'tar_finalizacion',
+            'tar_inicio',
+            'tar_cierre',
+            'tar_fkmateria',
         ],
-        [
-            'attribute' => 'tar_fkestado',
-            'value' => $model->tarFkestado ? $model->tarFkestado->est_nombre : 'No definido',
-        ],
-        [
-            'attribute' => 'tar_fkmateria',
-            'value' => $model->tarFkmateria ? $model->tarFkmateria->mat_nombre : 'No definido',
-        ],
-        [
-            'attribute' => 'tar_creacion',
-            'format' => ['date', 'php:Y-m-d'], // Muestra solo la fecha en formato YYYY-MM-DD
-        ],
-        [
-            'attribute' => 'tar_finalizacion',
-            'format' => ['date', 'php:Y-m-d'], // Muestra solo la fecha en formato YYYY-MM-DD
-        ],
-        [
-            'attribute' => 'tar_inicio',
-            'format' => ['date', 'php:Y-m-d'], // Muestra solo la fecha en formato YYYY-MM-DD
-        ],
-        [
-            'attribute' => 'tar_cierre',
-            'format' => ['date', 'php:Y-m-d'], // Muestra solo la fecha en formato YYYY-MM-DD
-        ],
-    ],
-]) ?>
+    ]) ?>
 
 
 </div>
