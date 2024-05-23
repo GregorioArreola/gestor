@@ -19,11 +19,11 @@ $config = [
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
-        /*
+        
         'user' => [
             'identityClass' => 'app\models\User',
             'enableAutoLogin' => true,
-        ],*/
+        ],
         'user' => [
             'class' => 'webvimark\modules\UserManagement\components\UserConfig',
     
